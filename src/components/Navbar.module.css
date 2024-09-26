@@ -1,0 +1,40 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    height: 72px;
+    padding: 0 2rem;
+    align-items: center;
+}
+
+.logo {
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%;
+}
+
+.navLink {
+    padding: 0 16px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.blackBtn {
+    padding: 8px 20px;
+    background-color: #000;
+    color: white;
+}
+
+@media screen and (max-width: 712px) {
+    .header {
+        padding: 24px 20px;
+    }
+
+    .navLink {
+        padding: 12px 0;
+    }
+
+    .blackBtn {
+        margin-top: 12px;
+    }
+}
