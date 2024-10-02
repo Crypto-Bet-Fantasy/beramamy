@@ -1,11 +1,24 @@
+'use client'
+
 import Link from "next/link"
 import styles from "./HeroSection.module.css"
 import commonStyles from "./CommonStyles.module.css"
 import Image from "next/image"
 import { h1Title } from "@/app/fonts"
 import { CounterBlock } from "./CommonUI"
+import { connect, injected } from "@wagmi/core"
+import {config} from '../config'
+import { useRouter } from 'next/navigation'
 
 export default function HeroSection() {
+    const router = useRouter()
+    const connectWallet = async () => {
+
+        await connect(config, { connector: injected() })
+
+        router.push('/vault')
+
+      };
     return (
         <>
             <section className={[' h-[950px] relative addBg'].join(' ')}>
@@ -23,9 +36,9 @@ export default function HeroSection() {
 
                     </div>
                     <div className=" text-black justify-between mt-[2rem] tablet:flex">
-                        <a href="https://twitter.com/RunesAcademy" target="_blank" >
-                            <button className=" bg-white px-6 h-[48px] rounded-[20px] font-bold">Get Your WL</button>
-                        </a>
+                        
+                            <button onClick={connectWallet} className=" bg-white px-6 h-[48px] rounded-[20px] font-bold">Get Your WL</button>
+
                         {/* <CounterBlock /> */}
                     </div>
                 </div>

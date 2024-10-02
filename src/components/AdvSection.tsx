@@ -3,7 +3,6 @@ import styles from "./HeroSection.module.css"
 import commonStyles from "./CommonStyles.module.css"
 import Image from "next/image"
 import { AdvtangeMobileCard, IconCard } from "./CommonUI"
-import { hiddenOnMobile } from "@/utils/styles"
 import { h1Title, orbitron } from "@/app/fonts"
 
 

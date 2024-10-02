@@ -1,4 +1,3 @@
-import { hiddenOnMobile } from "@/utils/styles"
 import commonStyles from "./CommonStyles.module.css"
 import Link from "next/link"
 import { orbitron } from "@/app/fonts"
@@ -111,6 +110,20 @@ export const CounterBlock = ({ addFlexCent }: { addFlexCent?: string }) => {
                 <CounterCard time="59" label="Minutes" />
                 <CounterCard time="59" label="Seconds" />
             </div>
+        </div>
+    )
+}
+
+interface IFlexItem {
+    leftText:string,
+    rightText:string
+}
+
+export const FlexItems = ({leftText, rightText}:IFlexItem) => {
+    return (
+        <div className="flex justify-between">
+            <h1>{leftText}</h1>
+            <h1>{rightText}</h1>
         </div>
     )
 }
