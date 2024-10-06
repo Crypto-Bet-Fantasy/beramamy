@@ -12,10 +12,13 @@ import ERC20_ABI from "../abis/ERC20.json";
 import { getAccount, writeContract } from "@wagmi/core";
 import { parseUnits } from "viem";
 import { orbitron } from "@/app/fonts";
+import { useAccount } from 'wagmi'
+import { FaCircleDollarToSlot } from "react-icons/fa6";
 
 export default function ActionModal({ action }: any) {
   const [isOpen, setIsOpen] = useState(false);
   const [amount, setAmount] = useState("");
+  const {address} = useAccount()
 
   const CA = "0x7C465310556BaE53B8788d8580d1Ea2AcCD7d80E";
 
@@ -27,7 +30,6 @@ export default function ActionModal({ action }: any) {
     setIsOpen(false);
   }
 
-  const { address } = getAccount(config);
 
   const handleAction = async () => {
     if (action == "deposit") {
@@ -73,14 +75,10 @@ export default function ActionModal({ action }: any) {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-md bg-[#171717] p-6 text-left align-middle shadow-xl transition-all">
+                <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-md bg-[#140F0F] p-6 text-left align-middle shadow-xl transition-all relative">
+                  {/* <Image alt="" src={"/bear-bg.png"} layout="fill" className="py-8 -z-10 object-contain absolute" /> */}
                   <Dialog.Title className="text-2xl font-medium leading-6 text-white flex items-center bg-[#1A1B1F] pl-4 pr-2 h-[48px] rounded-md">
-                    <Image
-                      src="/images/icons/usdc.svg"
-                      alt=""
-                      width={25}
-                      height={25}
-                    />
+                    <FaCircleDollarToSlot className="mr-4" />
                     <input
                       type="number"
                       value={amount}
@@ -88,9 +86,7 @@ export default function ActionModal({ action }: any) {
                       className="text-[20px] text-[#818181] w-full bg-transparent outline-none"
                       onChange={(e) => setAmount(e.target.value)}
                     />
-                    <button className="cursor-pointer bg-[#939191] p-2 rounded-md text-[10px] text-black">
-                      MAX
-                    </button>
+                   
                   </Dialog.Title>
                   <div className="text-[#645862] text-sm tracking-[0.19rem] font-light mb-[2rem]">
                     <FlexItems leftText="APY" rightText="52%" />

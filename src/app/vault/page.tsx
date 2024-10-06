@@ -7,49 +7,36 @@ import { config } from "@/config";
 import { getAccount, readContract } from "@wagmi/core";
 import vault from "../../abis/vault.json";
 import { useEffect, useState } from "react";
-import { parseUnits } from "viem";
+import { formatUnits, parseUnits } from "viem";
+import {useReadContract, useAccount} from 'wagmi'
 import Image from "next/image";
 import { h1Title } from "../fonts";
 
 const CA = "0x7C465310556BaE53B8788d8580d1Ea2AcCD7d80E";
 
 export default function Home() {
-  const [userBalance, setUserBalance] = useState("")
-  const [vaultBalance, setVaultBalance] = useState("")
-  const { address } = getAccount(config);
+  const { address } = useAccount();
 
-  const init = async () => {
-    const userBalance = await readContract(config, {
-      abi: vault.abi,
-      address: CA,
-      functionName: "balanceOf",
-      args: [address],
-    });
+  const {data:userBalance} =  useReadContract({
+    abi: vault.abi,
+    address: CA,
+    functionName: "balanceOf",
+    args: [address],
+  });
 
-    const vaultBalance = await readContract(config, {
-      abi: vault.abi,
-      address: CA,
-      functionName: "totalBalance",
-      args: [],
-    });
+  const {data:vaultBalance} =  useReadContract({
+    abi: vault.abi,
+    address: CA,
+    functionName: "totalBalance",
+    args: [],
+  });
 
-    console.log("userBalance: ", userBalance);
-    console.log("vaultBalance: ", vaultBalance);
-    //@ts-ignore
-    setUserBalance(parseUnits(userBalance, 18).toString())
-      //@ts-ignore
-    setVaultBalance(parseUnits(vaultBalance, 18).toString())
-  };
-
-
-  useEffect(() => {
-    init();
-  }, [address]);
 
   console.log(userBalance, vaultBalance)
 
   return (
     <div className="min-h-screen overflow-hidden">
+      <Navbar />
       <section className={commonStyles.padding}>
       <Image
         src="/vault-bg.png"
@@ -58,7 +45,7 @@ export default function Home() {
         quality={100}
         objectFit="cover"
         priority
-        className="-z-10 bg-slate-500 blur-sm"
+        className="-z-10 bg-slate-500 blur-2xl"
       />
 
       <div
@@ -68,10 +55,14 @@ export default function Home() {
             <h1 className={[h1Title, "text-[26px]"].join(" ")}>$HONEY - ARBITRAGE</h1>
           <div className="mb-[1rem]">
             <FlexItems leftText="APY" rightText="52%" />
-            <FlexItems leftText="Vault Balance" rightText={vaultBalance} />
-            <FlexItems leftText="Your Deposit" rightText={userBalance} />
-            <FlexItems leftText="Your P&L" rightText="52%" />
-            <FlexItems leftText="Availlable To Withdraw" rightText="52%" />
+            <FlexItems leftText="Vault Balance" 
+            //@ts-ignore
+            rightText={vaultBalance ? parseFloat(formatUnits(vaultBalance, 18)).toFixed(2) + " HONEY" : "0"} />
+            <FlexItems leftText="Your Deposit" 
+            //@ts-ignore
+            rightText={userBalance ? parseFloat(formatUnits(userBalance, 18)).toFixed(2) + " HONEY" : "0"} />
+            <FlexItems leftText="Your P&L" rightText="--" />
+            <FlexItems leftText="Availlable To Withdraw" rightText="--" />
           </div>
 
           <div className="flex w-full justify-between gap-12">

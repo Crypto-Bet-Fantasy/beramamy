@@ -9,6 +9,7 @@ import { CounterBlock } from "./CommonUI";
 import { connect, injected } from "@wagmi/core";
 import { config } from "../config";
 import { useRouter } from "next/navigation";
+import { FaDiscord, FaX } from "react-icons/fa6";
 
 export default function HeroSection() {
   const router = useRouter();
@@ -43,15 +44,25 @@ export default function HeroSection() {
             students will learn useful secrets...
           </p>
         </div>
-       <div>
-       <button
-          onClick={connectWallet}
-          className=" bg-white px-6 h-[48px] rounded-[20px] font-bold text-black"
-        >
-         Start earn yield
-        </button>
-        <Link href={""} className=" underline ml-8 text-lg" >Go to docs</Link>
-       </div>
+        <div>
+          <button
+            onClick={connectWallet}
+            className=" bg-white px-6 h-[48px] rounded-[20px] font-bold text-black"
+          >
+            Start earn yield
+          </button>
+          <Link href={""} className=" underline ml-8 text-lg">
+            Go to docs
+          </Link>
+        </div>
+        {/* <div>
+          <Link href="#">
+            <FaDiscord />
+          </Link>
+          <Link href="#">
+            <FaX />
+          </Link>
+        </div> */}
       </div>
     </section>
   );
