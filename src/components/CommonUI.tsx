@@ -121,8 +121,8 @@ interface IFlexItem {
 
 export const FlexItems = ({leftText, rightText}:IFlexItem) => {
     return (
-        <div className="flex justify-between">
-            <h1>{leftText}</h1>
+        <div className="flex justify-between text-xl py-4">
+            <h1 className={[orbitron.className, ' text-lg'].join(' ')}>{leftText}</h1>
             <h1>{rightText}</h1>
         </div>
     )
