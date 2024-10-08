@@ -1,15 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import styles from "./HeroSection.module.css";
-import commonStyles from "./CommonStyles.module.css";
 import Image from "next/image";
 import { h1Title } from "@/app/fonts";
-import { CounterBlock } from "./CommonUI";
 import { connect, injected } from "@wagmi/core";
 import { config } from "../config";
 import { useRouter } from "next/navigation";
-import { FaDiscord, FaX } from "react-icons/fa6";
 
 export default function HeroSection() {
   const router = useRouter();
@@ -22,7 +18,7 @@ export default function HeroSection() {
   return (
     <section className={[" min-h-screen relative addBg"].join(" ")}>
       <Image
-        src="/runes-hero.png"
+        src="/vault-bg.jpeg"
         alt="background image"
         layout="fill"
         quality={100}
@@ -31,17 +27,16 @@ export default function HeroSection() {
         className="-z-10 bg-slate-500 blur-[6px]"
       />
 
-      <div className="tablet:px-[6rem] px-4 pt-[15rem]">
-        <div className=" max-w-[560px] text-white">
-          <h1 className={[h1Title, "text-[56px]"].join(" ")}>
-            THE COMMUNITY <br />
-            YOU NEED TO <br />
-            OUTPERFORM <br />
-            ON RUNES
+      <div className="tablet:px-[8rem] px-4 pt-[15rem]">
+        <div className=" max-w-[1000px] text-white">
+          <h1 className={[h1Title, "text-[56px] leading-[1.3]"].join(" ")}>
+            EARN YIELD THROUGH<br />
+             DECENTRALIZE <br />
+            ARBITRAGE SYSTEM <br />
+          
           </h1>
           <p className=" py-[2rem]">
-            Runes insiders have gathered to create a private Academy where lucky
-            students will learn useful secrets...
+          Decentralized Finance (DeFi) platform that empowers users to optimize yield generation <br /> through cooperative arbitrage and liquidation strategies. 
           </p>
         </div>
         <div>
@@ -49,9 +44,9 @@ export default function HeroSection() {
             onClick={connectWallet}
             className=" bg-white px-6 h-[48px] rounded-[20px] font-bold text-black"
           >
-            Start earn yield
+            LAUNCH APP
           </button>
-          <Link href={""} className=" underline ml-8 text-lg">
+          <Link href={"https://docs.flasharb.xyz/"} target="_blank" className=" underline ml-8 text-lg">
             Go to docs
           </Link>
         </div>

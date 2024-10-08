@@ -1,24 +1,21 @@
 "use client";
 
-import { Button, Dialog, Transition } from "@headlessui/react";
+import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useState } from "react";
-import Image from "next/image";
 import { toast } from "sonner";
 import styles from "../components/CommonStyles.module.css";
 import { FlexItems } from "./CommonUI";
 import { config } from "../config";
 import vault from "../abis/vault.json";
 import ERC20_ABI from "../abis/ERC20.json";
-import { getAccount, writeContract } from "@wagmi/core";
+import { writeContract } from "@wagmi/core";
 import { parseUnits } from "viem";
 import { orbitron } from "@/app/fonts";
-import { useAccount } from 'wagmi'
 import { FaCircleDollarToSlot } from "react-icons/fa6";
 
 export default function ActionModal({ action }: any) {
   const [isOpen, setIsOpen] = useState(false);
   const [amount, setAmount] = useState("");
-  const {address} = useAccount()
 
   const CA = "0x7C465310556BaE53B8788d8580d1Ea2AcCD7d80E";
 
@@ -48,6 +45,7 @@ export default function ActionModal({ action }: any) {
       args: [parseUnits(amount, 18)],
     })
       .then((res) => {
+        console.log(res)
         toast.success("Successfully...");
       })
       .catch((err) => {

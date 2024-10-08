@@ -1,26 +1,5 @@
-import Link from "next/link"
-import styles from "./HeroSection.module.css"
-import commonStyles from "./CommonStyles.module.css"
-import Image from "next/image"
-import { AdvtangeMobileCard, IconCard } from "./CommonUI"
-import { h1Title, orbitron } from "@/app/fonts"
-
-
-const advtanges = [
-    {
-        title: "Unlock the Power of NFTs with Our Collection",
-        content: "Discover the unique features that set our NFT Collection apart. From rarity and security to the potential for high returns, our collection offers it all."
-    },
-    {
-        title: "Invest in Rare and Secure NFTs",
-        content: "Our NFT Collection brings you a curated selection of rare and secure digital assets. Explore the possibilities and seize the opportunity to grow your portfolio."
-    },
-    {
-        title: "Maximize Your Returns with NFT Investments",
-        content: "Our NFT Collection offers the potential for high returns. Don't miss out on this exciting opportunity to invest in the future of blockchain technology."
-    },
-
-]
+import {  IconCard } from "./CommonUI"
+import { h1Title } from "@/app/fonts"
 
 
 
