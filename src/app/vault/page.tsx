@@ -79,7 +79,6 @@ export default function Home() {
         </div>
       </section>
       <div className=" bg-white text-black rounded-md py-4 text-center w-[550px] text-lg absolute bottom-5 left-10">
-        {/* <h1>This is a testnet, Please do not deposit a lot of funds!</h1> */}
         <h1>Notice: Testnet environment – Please avoid large deposits!</h1>
       </div>
     </div>
