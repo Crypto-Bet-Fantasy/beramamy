@@ -27,7 +27,7 @@ export default function Home() {
     args: [],
   });
 
-  const toNumber = (data:any) => {
+  const toNumber = (data:bigint) => {
     return data ? parseFloat(formatUnits(data, 18)).toFixed(2) : "0"
   }
 
@@ -56,14 +56,14 @@ export default function Home() {
               <FlexItems leftText="APY" rightText="52%" />
               <FlexItems
                 leftText="Vault Balance"
-                rightText={
-                 "$" + toNumber(vaultBalance)
+                rightText={ 
+                  vaultBalance ? "$" + toNumber(BigInt(Number(vaultBalance))) : "0"
                 }
               />
               <FlexItems
                 leftText="Your Deposit"
                 rightText={
-                  "$" + toNumber(userBalance)
+                  userBalance?  "$" + toNumber(BigInt(Number(userBalance))) : "0"
                 }
               />
               <FlexItems leftText="Your P&L" rightText="--" />
