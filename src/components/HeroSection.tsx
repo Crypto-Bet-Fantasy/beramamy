@@ -1,15 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import styles from "./HeroSection.module.css";
-import commonStyles from "./CommonStyles.module.css";
 import Image from "next/image";
 import { h1Title } from "@/app/fonts";
-import { CounterBlock } from "./CommonUI";
 import { connect, injected } from "@wagmi/core";
 import { config } from "../config";
 import { useRouter } from "next/navigation";
-import { FaDiscord, FaX } from "react-icons/fa6";
 
 export default function HeroSection() {
   const router = useRouter();

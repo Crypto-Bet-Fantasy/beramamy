@@ -1,7 +1,7 @@
 import commonStyles from "./CommonStyles.module.css"
 import Link from "next/link"
 import { orbitron } from "@/app/fonts"
-import { FaDribbble, FaLinkedin, FaUser, FaXTwitter } from "react-icons/fa6"
+import { FaXTwitter } from "react-icons/fa6"
 import { FaUserCircle } from "react-icons/fa"
 
 
@@ -14,7 +14,7 @@ interface SimpleCardProps {
     label?: string
 }
 
-export const IconCard = ({ title, content, toggle, image, label }: SimpleCardProps) => {
+export const IconCard = ({ title, content, image, label }: SimpleCardProps) => {
     return (
         <div className=" text-center max-w-[400px] mx-auto mb-[4rem]">
             <div className="h-[64px]">
