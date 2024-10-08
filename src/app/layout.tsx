@@ -4,7 +4,7 @@ import { Providers } from "./provider";
 
 
 export const metadata: Metadata = {
-  title: "FlashArb",
+  title: "Flash Arbitrage dApp",
   description: "Generate Yield by Arbitrage",
 };
 
@@ -16,6 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <link rel="shortcut icon" href="/flashArb.png" type="image/x-icon" />
       <body
         className={`antialiased`}
       >
